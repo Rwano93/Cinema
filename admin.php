@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sélection et Suppression d'Utilisateur</title>
     <link rel="stylesheet" href="style.css">
@@ -10,37 +7,34 @@
  
     <h1>Sélection et Suppression d'Utilisateur</h1>
  
-    <form action="traitement_utilisateur.php" method="post">
-        <label for="utilisateur">Choisissez un utilisateur :</label>
-        <select id="utilisateur" name="utilisateur">
-            <?php
-            $bdd = new PDO('mysql:host=localhost;dbname=cinemaproject;charset=utf8', 'root', '');
-            $requete = "SELECT id_user, nom, email, mdp, date FROM user"; 
-            
-            $resultat = $bdd->query($requete);
- 
-        
-            ?>
+    <form action="" method="post">
+        <label for="choix">Choisissez une option :</label>
+        <select id="choix" name="choix">
+            <option value="user">User</option>
+            <option value="film">Film</option>
+            <option value="reservation">Reservation</option>
         </select>
  
-        <input type="submit" value="Supprimer l'utilisateur" name="supprimer">
+        <input type="submit" value="Choisir" name="choisir">
     </form>
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST['supprimer'])) {
-            $idUtilisateurASupprimer = $_POST['utilisateur'];
-
-
-            $bdd = new PDO('mysql:host=localhost;dbname=cinemaproject;charset=utf8', 'root', '');
-            $requeteSuppression = "DELETE FROM user WHERE id_user = ?";
-            $statement = $bdd->prepare($requeteSuppression);
-            $statement->execute([$idUtilisateurASupprimer]);
-
-            echo "<p>L'utilisateur avec l'ID $idUtilisateurASupprimer a été supprimé avec succès.</p>";
+        if (isset($_POST['choisir'])) {
+            $choix = $_POST['choix'];
+            switch($choix) {
+                case 'user':
+                    header('Location: utilisateur.php');
+                    break;
+                case 'film':
+                    header('Location: page_films.html');
+                    break;
+                case 'reservation':
+                    header('Location: reservation.php');
+                    break;
+            }
+            exit();
         }
     }
     ?>
- 
 </body>
-</html>
