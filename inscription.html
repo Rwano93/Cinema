@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="inscription.php" method="post">
+        <h1>Inscription</h1>
+        <label for="nom">Nom</label>
+        <input type="text" name="nom" id="nom" required>
+        <br>
+        <label for="prenom">Prénom</label>
+        <input type="text" name="prenom" id="prenom" required>
+        <br>
+        <label for="Email">Email</label>
+        <input type="text" name="mail" id="mail" required>
+        <br>
+        <label for="password">Mot de passe</label>
+        <input type="password" name="password" id="password" required>
+        <br>
+        <label for="password2">Confirmer le mot de passe</label>
+        <input type="password" name="password2" id="password2" required>
+        <br>
+        <input type="submit" value="S'inscrire">
+    </form>
+    <br>
+    <form method="post" action="enregistrer.html">
+        <h3>Vous avez déjà un compte ?</h3>
+        <style>
+            h3 {
+                color: rgb(35, 35, 35);
+                text-align: center;
+                margin: 8px;
+                display: block;
+            }
+        </style>
+        <input type="submit" value="Se connecter">
+    </form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="enregistrer.php" method="post">
+        <h1>Connexion</h1>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" required>
+        <br>
+        <label for="password">Mot de passe</label>
+        <input type="password" name="password" id="password" required>
+        <br>
+
+        <input type="submit" value="Se connecter">
+            
+
+        <p><a href="mdpoublie.html">Mot de passe oublié</a></p>
+        <style>
+            p {
+                text-align: left;
+                margin: 5px;
+                display: block;
+            }
+        </style>
+    </form>
+    <form method="post" action="inscription.html">
+        <h3>Vous n'avez pas de compte ?</h3>
+        <style>
+            h3 {
+                color: rgb(35, 35, 35);
+                text-align: center;
+                margin: 8px;
+                display: block;
+            }
+        </style>         
+        <input type="submit" value="S'inscrire">
+    </form>
+</body>
+</html>

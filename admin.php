@@ -15,17 +15,11 @@
         <select id="utilisateur" name="utilisateur">
             <?php
             $bdd = new PDO('mysql:host=localhost;dbname=cinemaproject;charset=utf8', 'root', '');
-            $requete = "SELECT id_user, nom, email, date FROM user"; 
+            $requete = "SELECT id_user, nom, email, mdp, date FROM user"; 
             
             $resultat = $bdd->query($requete);
  
-            foreach ($resultat as $utilisateur) {
-                $dateNaissance = new DateTime($utilisateur['date']); 
-                $aujourdHui = new DateTime(); 
-                $age = $aujourdHui->diff($dateNaissance)->y; 
- 
-                echo "<option value='" . $utilisateur['id_user'] . "'>" . "ID: " . $utilisateur['id_user'] . " - " . $utilisateur['nom'] . " - Email: " . $utilisateur['email'] ."</option>";
-            }
+        
             ?>
         </select>
  

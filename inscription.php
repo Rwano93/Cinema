@@ -1,7 +1,7 @@
 <?php
 var_dump($_POST);
 // Connexion à la base de données
-$bdd = new PDO("mysql:host=localhost;dbname=cinema;charset=utf8","root", "");
+$bdd = new PDO("mysql:host=localhost;dbname=cinemaproject;charset=utf8","root", "");
 
 // Vérification si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
