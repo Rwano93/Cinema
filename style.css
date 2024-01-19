@@ -1,8 +1,12 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #e4e4e4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    padding: 0 20px;
 }
 
 form {

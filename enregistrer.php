@@ -19,6 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<p>Erreur d'authentification</p>";
     }
+    if ($_POST['mail' == 'admin']  && $_POST['password' == 'admin']) {
+        header('Location: admin.php');
+        exit();
+    }
 
 
 }
