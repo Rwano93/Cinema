@@ -52,4 +52,17 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #4574a0;
 }
+button {
+    background-color: #007BFF; /* Couleur de fond bleue */
+    color: white; /* Couleur de texte blanche */
+    border: none; /* Supprime la bordure */
+    padding: 10px 20px; /* Ajoute du padding */
+    text-align: center; /* Centre le texte */
+    text-decoration: none; /* Supprime le soulignement */
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer; /* Change le curseur en main lorsque vous survolez le bouton */
+    border-radius: 4px; /* Ajoute des coins arrondis */
+}
 

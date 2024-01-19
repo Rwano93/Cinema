@@ -1,26 +1,38 @@
-<?php
-$bdd = new PDO('mysql:host=localhost;dbname=cinemaproject;charset=utf8', 'root', '');
-
-$res = $bdd->query('SELECT * FROM films');
-$films = $res->fetchAll();
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="path/to/select2.min.css" rel="stylesheet" />
-    <script src="path/to/select2.min.js"></script>
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-    <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 </head>
 <body>
-    <table>
-        <?php foreach($films as $film): ?>
-            <tr>
-                <td><img src="<?php echo $film['image']; ?>" alt="<?php echo $film['nom']; ?>"></td>
-                <td><?php echo $film['nom']; ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
+    <div class="container">
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Titre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($films as $film): ?>
+                    <tr>
+                    <td><img src="<?php echo $film['image']; ?>" alt="<?php echo $film['nom']; ?>"></td>
+                    <td><?php echo $film['nom']; ?></td>
+                    <td><?php echo $film['auteur']; ?></td>
+                    <td><?php echo $film['resume']; ?></td>
+                    <td><?php echo $film['date_sortie']; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
 </body>
 </html>
