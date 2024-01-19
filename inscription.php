@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $requete->rowCount();
     if ($result > 0) {
         echo "Inscription réussie!";
+        header('Location: enregistrer.html');
     } else {
         echo "Erreur lors de l'inscription";
     }
