@@ -1,7 +1,7 @@
 <?php
 
 
-$bdd = new PDO('mysql:host=localhost;dbname=erwan_site;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=cinemaproject;charset=utf8', 'root', '');
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
