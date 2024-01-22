@@ -46,7 +46,7 @@
                     header('Location: utilisateur.php');
                     break;
                 case 'film':
-                    header('Location: page_films.php');
+                    header('Location: film.php');
                     break;
                 case 'reservation':
                     header('Location: reservation.php');

@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     
-    $requete = $bdd->prepare("SELECT id_user, nom, prenom, metier, Pays, email, mdp FROM user WHERE email = :email");
+    $requete = $bdd->prepare("SELECT id_user, nom, prenom, email, mdp FROM user WHERE email = :email AND mdp = :mdp");
     $requete->execute(['email' => $email, 'mdp' => $password]);
     $result = $requete->fetch();
 
@@ -19,22 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } else {
             echo "<p>Vous êtes connecté</p>";
-            header('Location: page_films.php');
+            header('Location: index.php');
             exit();
         }
     } else {
         echo "<p>Erreur d'authentification</p>";
     }
-    if ($email == 'admin' && $password == 'admin') {
-        header('Location: admin.php');
-        exit();
-    } else {
-        echo "<p>Vous êtes connecté</p>";
-        header('Location: page_films.php');
-        exit();
-    }
-} else {
-    echo "<p>Erreur d'authentification</p>";
 
 
 }

@@ -1,3 +1,38 @@
+<?php
+$bdd = new PDO('mysql:host=localhost;dbname=cinemaproject;charset=utf8', 'root', '');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['arriere'])) {
+        header('Location: utilisateur.php');
+        exit;
+    }
+
+    if (isset($_POST['modifier'])) {
+        $id = $_POST['id'];
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $email = $_POST['email'];
+        $mdp = $_POST['password'];
+
+        $requete = $bdd->prepare("UPDATE user SET nom = ?, prenom = ?, email = ?, mdp = ? WHERE id_user = ?");
+        $result = $requete->execute([$nom, $prenom, $email, $mdp, $id]);
+
+        if ($result) {
+            echo "Modification réussie!";
+            header('Location: utilisateur.php');
+            exit;
+        } else {
+            echo "Erreur lors de la modification";
+        }
+    }
+} else {
+    $id = $_GET['id'];
+    $req = $bdd->prepare('SELECT * FROM user WHERE id_user = ?');
+    $req->execute(array($id));
+    $user = $req->fetch();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +43,16 @@
     <div class="container">
         <h1>Modifier Utilisateur</h1>
         <form action="modifier.php" method="post">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+
             <label for="nom">Nom</label>
             <input type="text" id="nom" name="nom" value="<?php echo $user['nom']; ?>">
 
             <label for="prenom">Prénom</label>
-            
+            <input type="text" id="prenom" name="prenom" value="<?php echo $user['prenom']; ?>">
 
-            <label for="mail">Email</label>
-            <input type="email" id="mail" name="mail" value="<?php echo $user['email']; ?>">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>">
 
             <label for="password">Mot de passe</label>
             <input type="password" id="password" name="password" value="<?php echo $user['mdp']; ?>">
@@ -26,44 +63,3 @@
     </div>
 </body>
 </html>
-
-<?php
-// Assurez-vous que ces lignes sont au début de votre fichier
-$bdd = new PDO('mysql:host=localhost;dbname=cinemaproject;charset=utf8', 'root', '');
-$id = $_GET['id']; // Assurez-vous que l'ID est passé dans l'URL
-
-// Récupération des informations de l'utilisateur
-$req = $bdd->prepare('SELECT * FROM user WHERE id_user = ?');
-$req->execute(array($id));
-$user = $req->fetch();
-
-// Vérification si le formulaire a été soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['arriere'])) {
-        // Redirige l'utilisateur vers utilisateur.php
-        header('Location: utilisateur.php');
-        exit;
-    }
-
-    if (isset($_POST['modifier'])) {
-        // Récupération des informations du formulaire
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-        $email = $_POST['email'];
-        $mdp = $_POST['password'];
-
-        // Préparation de la requête SQL
-        $requete = $bdd->prepare("UPDATE user SET nom = ?, prenom = ?, email = ?, mdp = ? WHERE id_user = ?");
-
-        // Exécution de la requête SQL
-        $result = $requete->execute([$nom, $prenom, $email, $mdp, $id]);
-
-        if ($result) {
-            echo "Modification réussie!";
-            header ('Location: utilisateur.php');
-        } else {
-            echo "Erreur lors de la modification";
-        }
-    }
-}
-?>
