@@ -12,21 +12,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $requete->fetch();
 
     if ($result) {
-        
-        $_SESSION["email"] = $result["email"];
-        $_SESSION["mdp"] = $result["mdp"];
-        header("Location: admin.php");
-
-    }if ($result["email"] == "admin" && $result["mdp"] == "admin") {
-        $_SESSION["email"] = $result["email"];
-        $_SESSION["mdp"] = $result["mdp"];
-        header("Location: admin.php");
-    } 
-    else {
-        header("Location:index.php");
-
+        if ($result["email"] == "admin" && $result["mdp"] == "admin") {
+           
+            header("Location: admin.php");
+        } else {
+          
+            $_SESSION["email"] = $result["email"];
+            $_SESSION["mdp"] = $result["mdp"];
+            header("Location: index.html");
+        }
+    } else {
+       
+        header("Location: login_error.php");
     }
+    
+
 }
-
-
 ?>
