@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } else {
             echo "<p>Vous êtes connecté</p>";
-            header('Location: index.php');
+            header('Location: admin.php');
             exit();
         }
     } else {
@@ -27,5 +27,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
-}
+} 
 ?>
