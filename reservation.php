@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         h1 {
             text-align: center;
@@ -66,7 +66,6 @@
         <div class="search-container">
             <button onclick="location.href='ajouter_reservation.php'" class="btn btn-primary btn-small">Ajouter</button>
             <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Rechercher" class="form-control">
-            <button onclick="location.href='admin.php'" class="btn btn-secondary btn-small">Retour à Admin</button>
         </div>
         <table id="reservationTable">
             <tr>
@@ -99,4 +98,3 @@
         </table>
     </div>
 </body>
-</html>
