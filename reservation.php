@@ -68,7 +68,7 @@
            
 
             <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Rechercher" class="form-control">
-            <button onclick="location.href='admin.php'" class="btn btn-primary">Retour</button>
+            <button onclick="location.href='index.php'" class="btn btn-primary">Retour</button>
         </div>
         <table id="reservationTable">
             <tr>
